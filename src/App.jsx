@@ -1,3 +1,4 @@
+import MovieList from "./components/MovieList"
 
 
 function App() {
@@ -13,6 +14,11 @@ function App() {
 
   return (
     <>
+      <div className="container">
+        <div className="card">
+          <MovieList array={film} />
+        </div>
+      </div>
 
     </>
   )
