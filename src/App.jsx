@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react"
 import MovieList from "./components/MovieList"
+import Form from "./components/Form"
 
 
 
 function App() {
 
-  const film = [
-    { title: 'Inception', genre: 'Fantascienza' },
-    { title: 'Il Padrino', genre: 'Thriller' },
-    { title: 'Titanic', genre: 'Romantico' },
-    { title: 'Batman', genre: 'Azione' },
-    { title: 'Interstellar', genre: 'Fantascienza' },
-    { title: 'Pulp Fiction', genre: 'Thriller' },
-  ]
+  const [film, setFilm] = useState(
+    [
+      { title: 'Inception', genre: 'Fantascienza' },
+      { title: 'Il Padrino', genre: 'Thriller' },
+      { title: 'Titanic', genre: 'Romantico' },
+      { title: 'Batman', genre: 'Azione' },
+      { title: 'Interstellar', genre: 'Fantascienza' },
+      { title: 'Pulp Fiction', genre: 'Thriller' },
+    ])
   const [category, setCategory] = useState('All')
   const [title, setTitle] = useState('')
   const [filtred, setFiltred] = useState(film)
@@ -22,12 +24,12 @@ function App() {
     if (category === 'All') {
       setFiltred(film)
 
-      console.log('start')
+      // console.log('start')
 
     } else {
       const filtredFilm = film.filter((el) => el.genre === category)
       setFiltred(filtredFilm)
-      console.log("change")
+      //console.log("change")
     }
   }, [category])
 
@@ -53,6 +55,7 @@ function App() {
     <>
 
       <div className="container mt-5 ">
+        <Form array={filtred} setArray={setFilm} />
         <div className="d-flex">
           <select
             className="form-select"
